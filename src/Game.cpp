@@ -9,7 +9,7 @@
 Game::Game(int width, int height, std::string title) {
     InitWindow(width, height, title.c_str());
 
-    TimeWidget* timeWidget = new TimeWidget;
+    TimeWidget* timeWidget = new TimeWidget(TIME_X, TIME_Y, TIME_W, TIME_H, "Time Widget");
     widgets.push_back(timeWidget);
 }
 
@@ -31,8 +31,7 @@ void Game::Tick() {
 void Game::Draw() {
     ClearBackground(BLACK);
 
-    DrawRectangle(0, 0, MONITOR_SIZE_X, MONITOR_SIZE_Y, SKYBLUE);
-    DrawRectangle(1, 1, MONITOR_SIZE_X-3, MONITOR_SIZE_Y-3, BLACK);
+    DrawRectangleLines(1, 1, MONITOR_SIZE_X-3, MONITOR_SIZE_Y-3, SKYBLUE);
 
     std::vector<Widget*> ::iterator i;
     for (i = widgets.begin(); i != widgets.end(); i++) {
