@@ -1,4 +1,9 @@
+#ifndef GAME
+#define GAME
+
 #include <string>
+#include <vector>
+#include "Widget.h"
 
 class Game {
 
@@ -11,7 +16,10 @@ public:
     void Tick();
 private:
 
+    std::vector<Widget*> widgets;
     void Draw();
     void Update();
 
 };
+
+#endif

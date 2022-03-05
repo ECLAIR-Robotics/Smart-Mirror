@@ -1,15 +1,12 @@
 #include "Game.h"
 #include <iostream>
+#include "Constants.h"
 using namespace std;
 
 int main(void){
+
     //Initialization
-    const int screenWidth  = 800;
-    const int screenHeight = 450;
-
-    cout << "In main.cpp\n";
-
-    Game game {screenWidth, screenHeight, "Smart Mirror"};
+    Game game {MONITOR_SIZE_X, MONITOR_SIZE_Y, "Smart Mirror"};
 
     while (!game.GameShouldClose()) {
         game.Tick();

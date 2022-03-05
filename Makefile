@@ -12,9 +12,6 @@ run:
 	 sahiljain11/smart-mirror
 	xhost -
 
-# Windows:
-# docker run --rm -i -t -v %cd%:/usr/smart-mirror -w /usr/smart-mirror -e DISPLAY=0.0 sahiljain11/smart-mirror
-
 raylib:
 	mkdir build
 	cd build && cmake ..
