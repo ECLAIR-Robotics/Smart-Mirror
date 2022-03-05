@@ -34,15 +34,4 @@ RUN make install
 
 WORKDIR /usr/smart-mirror
 
-#RUN apt-get install -y \
-#    build-base \
-#    libx11-dev \ 
-#    libxcursor-dev \
-#    libxrandr-dev \
-#    libxinerama-dev \
-#    libxi-dev \
-#    mesa-dev
-#
-#RUN apt-get install -y mesa-dri-gallium xvfb-run
-
 CMD bash
