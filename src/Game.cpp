@@ -5,12 +5,16 @@
 
 // Widgets
 #include "TimeWidget.h"
+#include "WeatherWidget.h"
 
 Game::Game(int width, int height, std::string title) {
     InitWindow(width, height, title.c_str());
 
     TimeWidget* timeWidget = new TimeWidget;
+    WeatherWidget* weatherWidget = new WeatherWidget;
+
     widgets.push_back(timeWidget);
+    widgets.push_back(weatherWidget);
 }
 
 Game::~Game() noexcept {
