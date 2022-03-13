@@ -14,14 +14,18 @@ public:
         updateDimensions(w, h);
         name = n;
         render = true;
+        render_border = false;
     };
 
     std::string name;
     bool render;
+    bool render_border;
 
     void update() {
         if (render) {
-            DrawRectangleLines(pos_x, pos_y, width, height, SKYBLUE);
+            if (render_border) {
+                DrawRectangleLines(pos_x, pos_y, width, height, SKYBLUE);
+            }
             BeginScissorMode(pos_x, pos_y, width, height);
             draw();
             EndScissorMode();

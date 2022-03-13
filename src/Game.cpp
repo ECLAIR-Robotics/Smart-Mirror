@@ -5,12 +5,15 @@
 
 // Widgets
 #include "TimeWidget.h"
+#include "NewsWidget.h"
 
 Game::Game(int width, int height, std::string title) {
     InitWindow(width, height, title.c_str());
 
     TimeWidget* timeWidget = new TimeWidget(TIME_X, TIME_Y, TIME_W, TIME_H, "Time Widget");
+    NewsWidget* newsWidget = new NewsWidget(NEWS_X, NEWS_Y, NEWS_W, NEWS_H, "News Widget");
     widgets.push_back(timeWidget);
+    widgets.push_back(newsWidget);
 }
 
 Game::~Game() noexcept {
