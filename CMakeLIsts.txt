@@ -32,7 +32,7 @@ endif()
 # Find source files
 file(GLOB_RECURSE SOURCE_FILES ${CMAKE_SOURCE_DIR}/src/*.cpp)
 # Find header files
-file(GLOB_RECURSE HEADER_FILES ${CMAKE_SOURCE_DIR}/inc/*.hpp)
+file(GLOB_RECURSE HEADER_FILES ${CMAKE_SOURCE_DIR}/inc/*.h)
 
 add_executable(jarvis.csj ${CMAKE_SOURCE_DIR}/src/main.cpp)
 target_link_libraries(jarvis.csj raylib)

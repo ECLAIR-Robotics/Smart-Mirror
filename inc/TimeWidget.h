@@ -25,7 +25,7 @@ public:
         std::time(&result);
         struct tm * timeinfo = gmtime(&result);
 
-        timeinfo->tm_hour = (timeinfo->tm_hour+CST)%24;
+        timeinfo->tm_hour = (timeinfo->tm_hour+CST+24)%24;
         char* text = asctime(timeinfo);
         int textWidth = MeasureText(text, 30);
 
