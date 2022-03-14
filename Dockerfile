@@ -9,7 +9,7 @@ RUN apt-get install -y libasound2-dev mesa-common-dev libx11-dev
 RUN apt-get install -y libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
 RUN apt-get install -y cmake unzip
 RUN apt-get install -y libcanberra-gtk-module libcanberra-gtk3-module
-RUN apt-get install -y mesa-utils
+RUN apt-get install -y mesa-utils libjsoncpp-dev libcurl4-gnutls-dev
 
 WORKDIR /usr/src
 

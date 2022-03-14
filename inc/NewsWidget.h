@@ -40,16 +40,9 @@ public:
         Widget (x, y, w, h, n) {
         // Calls widget's constructor
         //render = false;
-        Image imageMap = LoadImage("../resources/news/world_map.png");
-
-        ImageResize(&imageMap, width, height);
-        map = LoadTextureFromImage(imageMap);
-        UnloadImage(imageMap);
     }
 
     void draw() override {
-        //DrawTexture(map, pos_x, pos_y, SKYBLUE);
-
         float x_scale = ((float) width)  / ((float) POLY_SCALE);
         float y_scale = ((float) height) / ((float) POLY_SCALE) * 2;
 
@@ -76,7 +69,6 @@ public:
     }
 
 private:
-    Texture2D map;
     WorldMap worldMap {};
 };
 
