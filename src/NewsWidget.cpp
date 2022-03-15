@@ -22,8 +22,6 @@ Article::Article(string t, string s, string c) {
 }
 
 WorldMap::WorldMap() {
-    cout << "In world map\n";
-
     // Read the CSV file of polygon points
     ifstream vecfile {"../resources/news/world_map_vec.csv"};
     string line;

@@ -17,7 +17,14 @@ using namespace std;
     the thread is complete.
 
     For proper use, use a default value until finished is updated to true.
+    Example usage:
+
+        Json::Value data(new Json::Value());
+        bool finished = false;
+
+        get_http_request(&finished, "http://date.jsontest.com", &data);
+
 */
-void get_http_request(bool* finished, string* url, Json::Value* storage);
+void get_http_request(bool* finished, const string url, Json::Value* storage);
 
 #endif
