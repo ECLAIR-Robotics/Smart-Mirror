@@ -20,3 +20,7 @@
 #define POLY_MAX 180
 #define POLY_MIN -180
 #define POLY_SCALE POLY_MAX - POLY_MIN
+
+
+// Shader Information
+#define GLSL_VERSION 100
