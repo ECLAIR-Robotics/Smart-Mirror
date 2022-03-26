@@ -1,6 +1,8 @@
 #include "Game.h"
 #include <iostream>
 #include "Constants.h"
+#include "Utility.h"
+#include <string>
 using namespace std;
 
 int main(void){

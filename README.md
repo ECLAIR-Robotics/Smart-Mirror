@@ -1,3 +1,5 @@
+![Current Jarvis Image](./resources/images/jarvis.png)
+
 # Windows Installation
 
 In order to run raylib on Windows, please ensure that you have an Nvidia chip in your machine. If you do not, please let me know, and we can work something out.

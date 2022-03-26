@@ -2,27 +2,34 @@
 #define WIDGET
 #include <string>
 #include <iostream>
+#include <raylib.h>
+#include "Constants.h"
 using namespace std;
 
 class Widget {
 
 public:
-    Widget() {
-        cout << "Creating new widget\n";
-    };
 
-    Widget(uint32_t x, uint32_t y, uint32_t h, uint32_t w, std::string &n) {
+    Widget(uint32_t x, uint32_t y, uint32_t w, uint32_t h, std::string n) {
         updatePosition(x, y);
-        updateDimensions(h, w);
+        updateDimensions(w, h);
         name = n;
+        render = true;
+        render_border = false;
     };
 
     std::string name;
     bool render;
+    bool render_border;
 
     void update() {
         if (render) {
+            if (render_border) {
+                DrawRectangleLines(pos_x, pos_y, width, height, SKYBLUE);
+            }
+            BeginScissorMode(pos_x, pos_y, width, height);
             draw();
+            EndScissorMode();
         }
     }
 
@@ -31,14 +38,14 @@ public:
         pos_y = y;
     }
 
-    void updateDimensions(uint32_t h, uint32_t w) {
-        height = h;
+    void updateDimensions(uint32_t w, uint32_t h) {
         width = w;
+        height = h;
     }
 
     virtual void draw() {};
 
-private:
+protected:
 
     uint32_t height;
     uint32_t width;

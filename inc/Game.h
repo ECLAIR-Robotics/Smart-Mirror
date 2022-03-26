@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Widget.h"
+#include "Constants.h"
 
 class Game {
 
@@ -19,7 +20,8 @@ private:
     std::vector<Widget*> widgets;
     void Draw();
     void Update();
-
+    Shader glowing_shader;
+    RenderTexture2D target;
 };
 
 #endif

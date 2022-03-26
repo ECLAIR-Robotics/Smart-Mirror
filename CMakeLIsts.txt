@@ -29,17 +29,31 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
 
 endif()
 
+# Get jsoncpp
+
+find_package(CURL REQUIRED)
+find_package(jsoncpp REQUIRED)
+
 # Find source files
 file(GLOB_RECURSE SOURCE_FILES ${CMAKE_SOURCE_DIR}/src/*.cpp)
 # Find header files
-file(GLOB_RECURSE HEADER_FILES ${CMAKE_SOURCE_DIR}/inc/*.hpp)
+file(GLOB_RECURSE HEADER_FILES ${CMAKE_SOURCE_DIR}/inc/*.h)
 
 add_executable(jarvis.csj ${CMAKE_SOURCE_DIR}/src/main.cpp)
 target_link_libraries(jarvis.csj raylib)
 
+get_target_property(JSON_INC_PATH jsoncpp_lib INTERFACE_INCLUDE_DIRECTORIES)
+include_directories(${JSON_INC_PATH})
+target_link_libraries(jarvis.csj jsoncpp_lib)
+
+target_link_libraries(jarvis.csj ${CURL_LIBRARIES})
+
+
 # Set directories to search for header files
 include_directories(${CMAKE_SOURCE_DIR}/inc)
 
-add_library(jar ${STADYN} ${SOURCE_FILES} ${HEADER_FILES})
+add_library(jar ${STADYN} ${SOURCE_FILES} ${HEADER_FILES} ${JSONCPP_LIBRARIES} ${CURL_LIBRARIES})
 target_link_libraries(jar raylib)
+target_link_libraries(jar jsoncpp_lib)
+target_link_libraries(jar ${CURL_LIBRARIES})
 target_link_libraries(jarvis.csj jar)
