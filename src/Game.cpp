@@ -18,10 +18,10 @@ Game::Game(int width, int height, std::string title) {
 
     TimeWidget* timeWidget = new TimeWidget(TIME_X, TIME_Y, TIME_W, TIME_H, "Time Widget");
     NewsWidget* newsWidget = new NewsWidget(NEWS_X, NEWS_Y, NEWS_W, NEWS_H, "News Widget");
-    WeatherWidget* weatherWidget = new WeatherWidget;
+    WeatherWidget* weatherWidget = new WeatherWidget(WEATHER_X, WEATHER_Y, WEATHER_W, WEATHER_H, "Weather Widget");
     widgets.push_back(timeWidget);
     widgets.push_back(newsWidget);
-    widgets.push_back(weatherWidget)
+    widgets.push_back(weatherWidget);
 
 }
 
