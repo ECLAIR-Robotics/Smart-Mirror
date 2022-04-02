@@ -1,7 +1,7 @@
 //#define MONITOR_SIZE_X 1920
 //#define MONITOR_SIZE_Y 1080
-#define MONITOR_SIZE_X 1280
-#define MONITOR_SIZE_Y 720
+#define MONITOR_SIZE_X 1536
+#define MONITOR_SIZE_Y 864
 #define HALF_MONITOR_X MONITOR_SIZE_X / 2
 #define HALF_MONITOR_Y MONITOR_SIZE_Y / 2
 
@@ -11,6 +11,7 @@
 #define TIME_X HALF_MONITOR_X - (TIME_W / 2)
 #define TIME_Y HALF_MONITOR_Y - (4 * TIME_H / 2) - 5
 #define CST -5
+
 
 // Weather Widget Constants
 #define WEATHER_W 150

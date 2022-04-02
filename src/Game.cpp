@@ -22,7 +22,6 @@ Game::Game(int width, int height, std::string title) {
     widgets.push_back(timeWidget);
     widgets.push_back(newsWidget);
     widgets.push_back(weatherWidget);
-
 }
 
 Game::~Game() noexcept {
