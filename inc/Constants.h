@@ -12,6 +12,16 @@
 #define TIME_Y HALF_MONITOR_Y - (4 * TIME_H / 2) - 5
 #define CST -5
 
+
+// Weather Widget Constants
+#define WEATHER_W 150
+#define WEATHER_H 150
+#define WEATHER_X 75  
+#define WEATHER_Y 75
+#define AUSTIN_LATITUDE 30.2849
+#define AUSTIN_LONGITUDE -97.7341
+#define WEATHER_API "dfe9e7d6202c6f8719e0149ecdff6a62"
+
 // News Widget Constants
 #define NEWS_W 3 * 260
 #define NEWS_H 4 * 100
