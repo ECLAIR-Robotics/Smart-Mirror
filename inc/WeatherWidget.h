@@ -39,7 +39,7 @@ public:
             Json::StreamWriterBuilder builder;
             builder["indentation"] = ""; 
             // Convert json to string
-            ktemp = stof(Json::writeString(builder, informations["main"]["tempurature"]));
+            ktemp = stof(Json::writeString(builder, informations["main"]["temp"]));
             weatherConditions = Json::writeString(builder, informations["weather"][0]["main"]);
             weatherConditions = weatherConditions.substr(1, weatherConditions.length() - 2);
             city = Json::writeString(builder, informations["name"]);
@@ -49,12 +49,12 @@ public:
             ftemp = ((ctemp * 9)/5) + 32;
             std::ostringstream x;
             x << std::to_string((int) (isCelsius ? ctemp : ftemp)) << (isCelsius ? "°C" : "°F");
-            tempurature = x.str();
+            temperature = x.str();
             retrievedStrings = true;
         }
         else if (!weatherAPIFinished) {
             // don't use json here!
-            tempurature = "Loading...";
+            temperature = "Loading...";
             weatherConditions = "Loading...";
         }
         // Obtains rectangle for weather icon
@@ -63,7 +63,7 @@ public:
         Vector2 icon_pos {pos_x, pos_y + 30};
         DrawTextureRec(icons, rect, icon_pos, WHITE);
 
-        DrawText(tempurature.c_str(), pos_x + 80, pos_y + 60, 30, SKYBLUE); 
+        DrawText(temperature.c_str(), pos_x + 80, pos_y + 60, 30, SKYBLUE); 
         DrawText(weatherConditions.c_str(), pos_x, pos_y + 100, 30, SKYBLUE); 
         DrawText(city.c_str(), pos_x, pos_y, 30, SKYBLUE);
     }
@@ -78,7 +78,7 @@ private:
     const int IMAGE_SIZE_Y = MONITOR_SIZE_Y / 1.5;
     const int ICON_SIZE_X = IMAGE_SIZE_X / 8.5;
     const int ICON_SIZE_Y = IMAGE_SIZE_Y / 6;
-    std::string tempurature;
+    std::string temperature;
     std::string city;
     std::string weatherConditions;
     std::map<std::string, Rectangle> iconMap = {
