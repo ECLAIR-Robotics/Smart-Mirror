@@ -31,6 +31,12 @@
 #define POLY_MIN -180
 #define POLY_SCALE POLY_MAX - POLY_MIN
 
+//Calcuator widget Constants
+#define CALC_W 200
+#define CALC_H 500
+#define CALC_X WEATHER_X
+#define CALC_Y WEATHER_Y + WEATHER_H + 50
+
 
 // Shader Information
 #define GLSL_VERSION 100

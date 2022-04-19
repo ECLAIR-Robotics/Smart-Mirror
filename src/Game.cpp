@@ -7,10 +7,11 @@
 #include "TimeWidget.h"
 #include "WeatherWidget.h"
 #include "NewsWidget.h"
-
-Game::Game(int width, int height, std::string title) {
-    InitWindow(width, height, title.c_str());
-
+#include "Calculator.h"
+Game::Game(int width, int height, std::string title) //called from main.cpp
+ {
+    InitWindow(width, height, title.c_str()); //raylib function
+    
     glowing_shader = LoadShader(0, "../resources/shaders/glow.fs");
     target = LoadRenderTexture(MONITOR_SIZE_X, MONITOR_SIZE_Y);
     int target0_loc = GetShaderLocation(glowing_shader, "texture0");
@@ -19,9 +20,11 @@ Game::Game(int width, int height, std::string title) {
     TimeWidget* timeWidget = new TimeWidget(TIME_X, TIME_Y, TIME_W, TIME_H, "Time Widget");
     NewsWidget* newsWidget = new NewsWidget(NEWS_X, NEWS_Y, NEWS_W, NEWS_H, "News Widget");
     WeatherWidget* weatherWidget = new WeatherWidget(WEATHER_X, WEATHER_Y, WEATHER_W, WEATHER_H, "Weather Widget");
+    Calculator * calculator = new Calculator(CALC_X, CALC_Y , CALC_W, CALC_H, "Calculator");
     widgets.push_back(timeWidget);
     widgets.push_back(newsWidget);
     widgets.push_back(weatherWidget);
+    widgets.push_back(calculator);
 }
 
 Game::~Game() noexcept {
