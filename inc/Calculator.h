@@ -16,36 +16,38 @@
 using namespace std;
 
 class Calculator : public Widget {
-std::string text;
-Vector2 mousePoint;
-Texture2D plusButton;
-bool Button1Pressed;
-int offset;
-int lastOperatorIndex;
-
-stack<char> operators;
-stack<float> operands;
+private:
+ std::string text;
+ Vector2 mousePoint;
+ Texture2D plusButton;
+ bool Button1Pressed;
+ int offset;
+ int lastOperatorIndex;
+ stack<char> operators;
+ stack<float> operands;
 public:
     Calculator(uint32_t x, uint32_t y, uint32_t w, uint32_t h, std::string n) :
         Widget (x, y, w, h, n) {
         // Calls widget's constructor
         //render = false;
         text = "";
-        mousePoint = {0.0f, 0.0f};
-        Image plusIcon = LoadImage("../resources/images/plus_operator.png");
-        ImageResize(&plusIcon, 50, 50);
+        mousePoint = { 0.0f , 0.0f };
+        Image plusIcon = LoadImage( "../resources/images/plus_operator.png" );
+        ImageResize( &plusIcon, 50, 50);
         plusButton = LoadTextureFromImage(plusIcon);
         UnloadImage(plusIcon);
         Button1Pressed = false;
         offset = 25;
         
     }
+private:    
     void spawnButton(int x, int y, int w,int h, std::string buttonText)
     {
         DrawRectangleLines(x,y,w,h,SKYBLUE);
         int buttonOffset = (50 - MeasureText(buttonText.c_str(),30))/2;
         DrawText(buttonText.c_str(), buttonOffset+x, 10 + y, 30, SKYBLUE);
     }
+private:
     bool buttonInteract(int x, int y, int w,int h, std::string buttonText){
         if (CheckCollisionPointRec(mousePoint, (Rectangle){x,y,w,h})){
         DrawRectangle(x,y,w,h,SKYBLUE);
@@ -59,97 +61,18 @@ public:
 
     }
 
-    /*int prec(char ch) {
-	if (ch == '^')
-		return 3;
-	else if (ch == '/' || ch == '*')
-		return 2;
-	else if (ch == '+' || ch == '-')
-		return 1;
-	else
-		return -1;
-}
-int applyOp(int b, int a, char op){
-    switch(op){
-        case '+': return a + b;
-        case '-': return b - a;
-        case '*': return a * b;
-        case '/': return b / a;
-        case '^': return pow(b, a);
-    }
-}
-float evaluateExpression(std::string expressionText)
-{   
-    std::string lastOperand = "";
-    float ans = 0.0f;
-    for( int i = 0; i <= expressionText.length(); i++){
-        if(isalnum(expressionText[i])){
-            lastOperand += expressionText[i];
-        }
-        else{
-            if (lastOperand.length() > 0){
-            operands.push(std::stof(lastOperand));
-            lastOperand = "";}
 
-            if ( expressionText[i] == '('){
-                operators.push(expressionText[i]);
-            }
-            else if(expressionText[i] == ')'){
-                while (!operators.empty() && operators.top () != '('){
-                    int val2 = operands.top();
-                    operands.pop();
-                    int val1 = operands.top();
-                    operands.pop();
-                    char op = operators.top();
-                    operators.pop();
-
-                    operands.push(applyOp(val1, val2, op));
-                }
-
-                if ( !operators.empty()){
-                    operators.pop();
-                }
-            }
-            else{
-                while (!operators.empty() && prec(operators.top()) >= prec(expressionText[i])){
-                    int val2 = operands.top();
-                    operands.pop();
-                    int val1 = operands.top();
-                    operands.pop();
-                    char op = operators.top();
-                    operators.pop();
-
-                    operands.push(applyOp(val1, val2, op));
-                }
-                operators.push(expressionText[i]);
-            }
-        }
-    }
-    while (!operands.empty()){
-        int val2 = operands.top();
-        operands.pop();
-        int val1 = operands.top();
-        operands.pop();
-
-        char op = operators.top();
-        operators.pop();
-        operands.push(applyOp(val1, val2, op));
-    }
-    return operands.top();
-}*/
-
+private:
 int precedence(char op){
-    if(op == '+'||op == '-')
-    return 1;
-    if(op == '*'||op == '/')
-    return 2;
-    if(op == '^')
-    return 3;
+    if(op == '+'||op == '-') return 1;
+    if(op == '*'||op == '/') return 2;
+    if(op == '^') return 3;
     return 0;
 }
  
 // Function to perform arithmetic operations.
-float applyOp(float a, float b, char op){
+private:
+ float applyOp(float a, float b, char op){
     switch(op){
         case '+': return a + b;
         case '-': return a - b;
@@ -161,6 +84,7 @@ float applyOp(float a, float b, char op){
  
 // Function that returns value of
 // expression after evaluation.
+private:
 float evaluate(string tokens){
     int i;
      
@@ -280,16 +204,17 @@ float evaluate(string tokens){
 
 
 //
-
+private: 
     void draw() override {
 
         // Put code here for drawing!
         int32_t middle_x =  pos_x + (width / 2); //posx => parameter in Widget
         int32_t middle_y = pos_y ;
-        //+ (height / 2)
+
         mousePoint = GetMousePosition();
+
         //checks if mouse is over the calc widget , the if block can be removed if the calc needs to be static
-        if (CheckCollisionPointRec(mousePoint, (Rectangle){pos_x, pos_y,CALC_W, CALC_H }) ){
+        if (CheckCollisionPointRec(mousePoint, (Rectangle){pos_x, pos_y, CALC_W, CALC_H }) ){
        
         int textWidth = MeasureText(text.c_str(), 30);
         
@@ -333,52 +258,56 @@ float evaluate(string tokens){
         if(buttonInteract(offset +pos_x, middle_y  + 100 , 50,50, "1")){text += "1";}
         if(buttonInteract(offset +pos_x, middle_y  + 150 , 50,50, "4")){text += "4";}
         if(buttonInteract(offset +pos_x, middle_y  + 200 , 50,50, "7")){text += "7";}
-
         if(buttonInteract(offset +pos_x, middle_y  + 250 , 50,50, "+") && (isalnum(text.c_str()[text.length()-1]) || text.c_str()[text.length()-1] == ')' ) )
-        {
-            text += "+";        
-        }
+        { text += "+"; }
         if(buttonInteract(offset +pos_x, middle_y  + 300 , 50,50, "-") && (isalnum(text.c_str()[text.length()-1]) || text.c_str()[text.length()-1] == ')' ))
-        {text += "-";}
-        if(buttonInteract(offset +pos_x, middle_y  + 350 , 50,50, "^") && (isalnum(text.c_str()[text.length()-1]) || text.c_str()[text.length()-1] == ')' ))
-        {text += "^";}
-        if(buttonInteract(offset +pos_x, middle_y  + 400 , 50,50, "CE")){text = "";}
+        { text += "-"; }
+        if(buttonInteract(offset +pos_x, middle_y  + 350 , 50,50, "^") && (isalnum(text.c_str()[text.length()-1]) || 
+        text.c_str()[text.length()-1] == ')' ))
+        { text += "^"; }
+        if(buttonInteract(offset +pos_x, middle_y  + 400 , 50,50, "CE"))
+        { text = ""; }
 
         //column 2
         if(buttonInteract(offset +pos_x + 50, middle_y  + 100 , 50,50, "2")){text += "2";}
         if(buttonInteract(offset +pos_x + 50, middle_y  + 150 , 50,50, "5")){text += "5";}
         if(buttonInteract(offset +pos_x + 50, middle_y  + 200 , 50,50, "8")){text += "8";}
-
         if(buttonInteract(offset +pos_x + 50, middle_y  + 250 , 50,50, "0")){text += "0";}
         if(buttonInteract(offset +pos_x + 50, middle_y  + 300 , 50,50, "/") && (isalnum(text.c_str()[text.length()-1]) || text.c_str()[text.length()-1] == ')' ))
-        {text += "/";}
+        { text += "/"; }
         if(buttonInteract(offset +pos_x + 50, middle_y  + 350 , 50,50, "*" ) && isalnum(text.c_str()[text.length()-1]))
-        {text += "*";}
-        if(buttonInteract(offset +pos_x + 50, middle_y  + 400 , 50,50, "C")){text = text.substr(0, text.length() -1);}
+        { text += "*"; }
+        if(buttonInteract(offset +pos_x + 50, middle_y  + 400 , 50,50, "C"))
+        {text = text.substr(0, text.length() -1);}
 
         //column 3
         if(buttonInteract(offset +pos_x + 100, middle_y  + 100 , 50,50, "3")){text += "3";}
         if(buttonInteract(offset +pos_x + 100, middle_y  + 150 , 50,50, "6")){text += "6";}
         if(buttonInteract(offset +pos_x + 100, middle_y  + 200 , 50,50, "9")){text += "9";}
 
-        if(buttonInteract(offset +pos_x + 100, middle_y  + 250 , 50,50, "(") && !isalnum(text.c_str()[text.length()-1])){text += "(";}
-        if(buttonInteract(offset +pos_x + 100, middle_y  + 300 , 50,50, ")") && isalnum(text.c_str()[text.length()-1])){text += ")";}
-        if(buttonInteract(offset +pos_x + 100, middle_y  + 350 , 50,50, ".") && isalnum(text.c_str()[text.length()-1])){text += ".";}
+        if(buttonInteract(offset +pos_x + 100, middle_y  + 250 , 50,50, "(") && 
+        !isalnum(text.c_str()[text.length()-1]))
+        { text += "("; }
+        if(buttonInteract(offset +pos_x + 100, middle_y  + 300 , 50,50, ")") &&
+         isalnum(text.c_str()[text.length()-1]))
+         { text += ")"; }
+        if(buttonInteract(offset +pos_x + 100, middle_y  + 350 , 50,50, ".") && 
+        isalnum(text.c_str()[text.length()-1]))
+        { text += "."; }
         if(buttonInteract(offset +pos_x + 100, middle_y  + 400 , 50,50, "=")){
             
             float resultEval = evaluate(text);
             //resultEval = round(100  * resultEval)/100.0;
             int int_resultEval = round(resultEval * 100);
             std::string str_resultEval = std::to_string(int_resultEval);
-            text = str_resultEval.substr(0, str_resultEval.length() - 2) + "." + str_resultEval.substr( str_resultEval.length() - 2, str_resultEval.length() - 1);
-        }
+            text = str_resultEval.substr(0, str_resultEval.length() - 2) + "." + 
+            str_resultEval.substr( str_resultEval.length() - 2, str_resultEval.length() - 1);
         
-     }
-
-        else{
-            int hoverTextWidth;
-           std::string text_display = "CALCULATOR";
-             hoverTextWidth = MeasureText(text_display.c_str(), 20);
+        }}
+     else{
+        int hoverTextWidth;
+        std::string text_display = "CALCULATOR";
+        hoverTextWidth = MeasureText(text_display.c_str(), 20);
         uint32_t x_cord = middle_x - (hoverTextWidth / 2);
         DrawText(text_display.c_str(), x_cord + 10, middle_y + 40, 20, SKYBLUE);
         
