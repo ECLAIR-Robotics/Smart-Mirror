@@ -41,21 +41,23 @@ public:
         
     }
 private:    
-    void spawnButton(int x, int y, int w,int h, std::string buttonText)
-    {
+    void spawnButton(int x, int y, int w,int h, std::string buttonText){
         DrawRectangleLines(x,y,w,h,SKYBLUE);
         int buttonOffset = (50 - MeasureText(buttonText.c_str(),30))/2;
         DrawText(buttonText.c_str(), buttonOffset+x, 10 + y, 30, SKYBLUE);
     }
 private:
     bool buttonInteract(int x, int y, int w,int h, std::string buttonText){
-        if (CheckCollisionPointRec(mousePoint, (Rectangle){x,y,w,h})){
-        DrawRectangle(x,y,w,h,SKYBLUE);
-        int buttonOffset = (50 - MeasureText(buttonText.c_str(),30))/2;
-        DrawText(buttonText.c_str(), buttonOffset+x, 10 + y, 30, BLACK);
 
-        if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) return true;
+        if (CheckCollisionPointRec(mousePoint, (Rectangle){x,y,w,h})){
+
+            DrawRectangle(x,y,w,h,SKYBLUE);
+            int buttonOffset = (50 - MeasureText(buttonText.c_str(),30))/2;
+            DrawText(buttonText.c_str(), buttonOffset+x, 10 + y, 30, BLACK);
+
+            if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) return true;
             else return false;
+
         }
         
 
