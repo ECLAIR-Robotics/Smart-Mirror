@@ -75,13 +75,13 @@ int precedence(char op){
 // Function to perform arithmetic operations.
 private:
  float applyOp(float a, float b, char op){
-    switch(op){
-        case '+': return a + b;
-        case '-': return a - b;
-        case '*': return a * b;
-        case '/': return a / b;
-        case '^': return pow(a,b);
-    }
+
+    if ( op == '+') return a+b;
+    else if ( op == '-') return a-b;
+    else if (op == '*') return a*b;
+    else if (op == '/') return a/b;
+    else if (op == '^') return pow(a,b);  
+    
 }
  
 // Function that returns value of
