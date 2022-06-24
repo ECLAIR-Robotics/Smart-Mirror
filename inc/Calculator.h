@@ -211,11 +211,11 @@ private:
 
         // Put code here for drawing!
         int32_t middle_x =  pos_x + (width / 2); //posx => parameter in Widget
-        int32_t middle_y = pos_y ;
+        int32_t middle_y =  pos_y ;
 
         mousePoint = GetMousePosition();
 
-        //checks if mouse is over the calc widget , the if block can be removed if the calc needs to be static
+        //checks if mouse is over the caluclator widget , the if block can be removed if the calc needs to be static
         if (CheckCollisionPointRec(mousePoint, (Rectangle){pos_x, pos_y, CALC_W, CALC_H }) ){
        
         int textWidth = MeasureText(text.c_str(), 30);
@@ -223,7 +223,7 @@ private:
         uint32_t x_cord = middle_x - (textWidth / 2);
         DrawText(text.c_str(), x_cord, middle_y + 20, 30, SKYBLUE);
         
-       // DrawRectangleLines(x_cord, middle_y + 20, textWidth, 50, SKYBLUE);
+      
         Rectangle button_op1 = {x_cord , middle_y + 80, 50, 50};
         
         
@@ -299,18 +299,23 @@ private:
         if(buttonInteract(offset +pos_x + 100, middle_y  + 400 , 50,50, "=")){
             
             float resultEval = evaluate(text);
-            //resultEval = round(100  * resultEval)/100.0;
+            
             int int_resultEval = round(resultEval * 100);
             std::string str_resultEval = std::to_string(int_resultEval);
             text = str_resultEval.substr(0, str_resultEval.length() - 2) + "." + 
             str_resultEval.substr( str_resultEval.length() - 2, str_resultEval.length() - 1);
         
-        }}
+        }
+        }
      else{
+
         int hoverTextWidth;
         std::string text_display = "CALCULATOR";
+
         hoverTextWidth = MeasureText(text_display.c_str(), 20);
         uint32_t x_cord = middle_x - (hoverTextWidth / 2);
+
+
         DrawText(text_display.c_str(), x_cord + 10, middle_y + 40, 20, SKYBLUE);
         
         DrawRectangleLines(x_cord, middle_y + 20, hoverTextWidth + 20, 50, SKYBLUE);

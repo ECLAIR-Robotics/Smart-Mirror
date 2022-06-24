@@ -20,6 +20,7 @@ public:
         Widget (x, y, w, h, n) { 
 
         Image weatherIcons = LoadImage("../resources/Adjusted-Weather-Icons.png");
+        
         ImageResize(&weatherIcons, IMAGE_SIZE_X, IMAGE_SIZE_Y);
         icons = LoadTextureFromImage(weatherIcons);
         UnloadImage(weatherIcons);
@@ -57,14 +58,26 @@ public:
             temperature = "Loading...";
             weatherConditions = "Loading...";
         }
-        // Obtains rectangle for weather icon
-        Rectangle rect = iconMap["Clear"];
+        
+        
+        //  Obtains rectangle for weather icon 
+        //  so far doesn't change icon with weather conditions
+         
+         
+        Rectangle rect = iconMap[weatherConditions.c_str()];
+        Rectangle rect2 = iconMap["Thunderstorm"];
         // Position for icon on screen
         Vector2 icon_pos {pos_x, pos_y + 30};
-        DrawTextureRec(icons, rect, icon_pos, WHITE);
 
-        DrawText(temperature.c_str(), pos_x + 80, pos_y + 60, 30, SKYBLUE); 
-        DrawText(weatherConditions.c_str(), pos_x, pos_y + 100, 30, SKYBLUE); 
+        //Renders the final weather report
+        DrawTextureRec(icons, rect, icon_pos, WHITE);
+        //renders another icon on top of the actual icon ******test*****
+        BeginBlendMode(1);
+        // Draw here for 
+        // DrawTextureRec(icons, rect2, icon_pos, WHITE );
+        EndBlendMode();
+        DrawText(temperature.c_str(), pos_x + ICON_SIZE_X , pos_y + 60, 30, SKYBLUE); 
+        DrawText(weatherConditions.c_str(), pos_x, pos_y+ ICON_SIZE_Y + 20, 30, SKYBLUE); 
         DrawText(city.c_str(), pos_x, pos_y, 30, SKYBLUE);
     }
 
