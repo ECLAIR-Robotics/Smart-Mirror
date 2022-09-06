@@ -3,3 +3,4 @@ graphics-service/build
 .vscode
 .vscode/*
 api-service/__pycache__
+build
