@@ -1,3 +1,6 @@
-/build/*
-/.vs/*
-/.vscode/*
+graphics-service/build
+.vs
+.vscode
+.vscode/*
+api-service/__pycache__
+build

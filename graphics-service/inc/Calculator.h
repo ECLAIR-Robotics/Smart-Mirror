@@ -16,6 +16,7 @@
 using namespace std;
 
 class Calculator : public Widget {
+
 private:
  std::string text;
  Vector2 mousePoint;
@@ -25,6 +26,7 @@ private:
  int lastOperatorIndex;
  stack<char> operators;
  stack<float> operands;
+
 public:
     Calculator(uint32_t x, uint32_t y, uint32_t w, uint32_t h, std::string n) :
         Widget (x, y, w, h, n) {
@@ -216,7 +218,24 @@ private:
         mousePoint = GetMousePosition();
 
         //checks if mouse is over the caluclator widget , the if block can be removed if the calc needs to be static
-        if (CheckCollisionPointRec(mousePoint, (Rectangle){pos_x, pos_y, CALC_W, CALC_H }) ){
+        bool isHovering = CheckCollisionPointRec(mousePoint, (Rectangle){pos_x, pos_y, CALC_W, CALC_H }) ;
+        
+            
+
+        int hoverTextWidth;
+        std::string text_display = "CALCULATOR";
+
+        hoverTextWidth = MeasureText(text_display.c_str(), 20);
+        uint32_t x_cord = middle_x - (hoverTextWidth / 2);
+
+
+        DrawText(text_display.c_str(), x_cord + 10, middle_y + 40, 20, SKYBLUE);
+        
+        DrawRectangleLines(x_cord, middle_y + 20, hoverTextWidth + 20, 50, SKYBLUE);
+        
+        
+        
+        
        
         int textWidth = MeasureText(text.c_str(), 30);
         
@@ -306,21 +325,8 @@ private:
             str_resultEval.substr( str_resultEval.length() - 2, str_resultEval.length() - 1);
         
         }
-        }
-     else{
-
-        int hoverTextWidth;
-        std::string text_display = "CALCULATOR";
-
-        hoverTextWidth = MeasureText(text_display.c_str(), 20);
-        uint32_t x_cord = middle_x - (hoverTextWidth / 2);
-
-
-        DrawText(text_display.c_str(), x_cord + 10, middle_y + 40, 20, SKYBLUE);
         
-        DrawRectangleLines(x_cord, middle_y + 20, hoverTextWidth + 20, 50, SKYBLUE);
-        
-        }
+    
     }
 
 private:
