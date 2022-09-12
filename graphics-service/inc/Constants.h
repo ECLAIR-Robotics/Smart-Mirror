@@ -38,4 +38,4 @@
 #define GLSL_VERSION 100
 
 // Color scheme
-#define MAIN_COLOR SKY_BLUE
+#define MAIN_COLOR SKYBLUE

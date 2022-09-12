@@ -1,5 +1,5 @@
 docker:
-	docker build -t sahiljain11/smart-mirror .
+	docker build -t smart-mirror/graphics-service .
 
 run:
 	xhost +
@@ -9,7 +9,7 @@ run:
 	 -w /usr/smart-mirror \
 	 -e DISPLAY=host.docker.internal:0.0 \
 	 -e LIBGL_ALWAYS_INDIRECT=1 \
-	 sahiljain11/smart-mirror
+	 smart-mirror/graphics-service
 	xhost -
 
 raylib:

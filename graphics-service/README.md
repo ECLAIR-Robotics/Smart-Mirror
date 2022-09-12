@@ -14,11 +14,11 @@ Now, we have to create our docker container. To do so, open up your terminal or 
 
 or
 
-```docker build -t <name_of_container> .```
+```docker build -t smart-mirror/graphics-service .```
 
 This initial command will take a while to compute. Don't worry! It should be done in around ~10 minutes. You only need to do this once so you don't have to worry about this anymore while developing. Now, we can run our container using the following command:
 
-```docker run --rm -i -t -v %cd%:/usr/smart-mirror -w /usr/smart-mirror -e DISPLAY=host.docker.internal:0.0 <name_of_container>```
+```docker run --rm -i -t -v %cd%:/usr/smart-mirror -w /usr/smart-mirror -e DISPLAY=host.docker.internal:0.0 smart-mirror/graphics-service```
 
 Once inside the docker container, run the following:
 
