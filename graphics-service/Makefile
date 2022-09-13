@@ -15,6 +15,8 @@ run:
 raylib:
 	mkdir build
 	cd build && cmake ..
+
+compile:
 	cd build && cmake --build .
 
 clean:

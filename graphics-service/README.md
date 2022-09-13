@@ -28,6 +28,10 @@ If there's an error about caching, run the following command:
 
 ```$ cmake --build .```
 
+Then, run the following command in order to compile the codebase. IF YOU MAKE CHANGES TO THE CODE, YOU MUST RUN THIS COMMAND IN ORDER TO RE-COMPILE YOUR CHANGES!!!
+
+```$ make compile```
+
 Once that's done, you can do the following and a graphics screen should pop up!
 
 ```$ ./jarvis.csj```
