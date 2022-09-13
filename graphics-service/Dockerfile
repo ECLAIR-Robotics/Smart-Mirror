@@ -19,8 +19,8 @@ RUN rm cmake-3.20.0.tar.gz
 RUN cd cmake-3.20.0
 WORKDIR /usr/src/cmake-3.20.0
 RUN ./bootstrap
-RUN make
-RUN make install
+RUN make -j
+RUN make install -j
 
 WORKDIR /usr/src
 
@@ -30,7 +30,7 @@ RUN rm glfw-3.2.1.zip
 RUN cd glfw-3.2.1
 WORKDIR /usr/src/glfw-3.2.1
 RUN cmake -DBUILD_SHARED_LIBS=ON
-RUN make install
+RUN make install -j
 
 WORKDIR /usr/smart-mirror
 

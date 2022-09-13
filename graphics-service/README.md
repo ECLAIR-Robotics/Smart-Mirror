@@ -22,7 +22,7 @@ This initial command will take a while to compute. Don't worry! It should be don
 
 Once inside the docker container, run the following:
 
-```$ make raylib```
+```$ make raylib -j```
 
 If there's an error about caching, run the following command:
 
@@ -30,7 +30,7 @@ If there's an error about caching, run the following command:
 
 Then, run the following command in order to compile the codebase. IF YOU MAKE CHANGES TO THE CODE, YOU MUST RUN THIS COMMAND IN ORDER TO RE-COMPILE YOUR CHANGES!!!
 
-```$ make compile```
+```$ make compile -j```
 
 Once that's done, you can do the following and a graphics screen should pop up!
 
