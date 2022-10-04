@@ -20,7 +20,7 @@ public:
         Widget (x, y, w, h, n) { 
 
         Image weatherIcons = LoadImage("../resources/Adjusted-Weather-Icons.png");
-        ImageResize(&weatherIcons, IMAGE_SIZE_X, IMAGE_SIZE_Y);
+        ImageResize(&weatherIcons, 50, 50);
         icons = LoadTextureFromImage(weatherIcons);
         UnloadImage(weatherIcons);
 
@@ -60,7 +60,7 @@ public:
         // Obtains rectangle for weather icon
         Rectangle rect = iconMap["Clear"];
         // Position for icon on screen
-        Vector2 icon_pos {pos_x, pos_y + 30};
+        Vector2 icon_pos {(float) pos_x, (float) (pos_y) + 30};
         DrawTextureRec(icons, rect, icon_pos, WHITE);
 
         DrawText(temperature.c_str(), pos_x + 80, pos_y + 60, 30, SKYBLUE); 
@@ -74,32 +74,31 @@ private:
     bool retrievedStrings = false;
     bool isCelsius = false;
     Json::Value informations = new Json::Value();
-    const int IMAGE_SIZE_X = MONITOR_SIZE_X / 2;
-    const int IMAGE_SIZE_Y = MONITOR_SIZE_Y / 1.5;
-    const int ICON_SIZE_X = IMAGE_SIZE_X / 8.5;
-    const int ICON_SIZE_Y = IMAGE_SIZE_Y / 6;
+
     std::string temperature;
     std::string city;
     std::string weatherConditions;
+
     std::map<std::string, Rectangle> iconMap = {
-        {"Clouds", {IMAGE_SIZE_X/10, IMAGE_SIZE_Y/7, ICON_SIZE_X, ICON_SIZE_Y}},  /* Cloudy */
-        {"Thunderstorm", {IMAGE_SIZE_X/10, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}},  /* Thunderstorm */
-        {"Clear", {IMAGE_SIZE_X/3.8, IMAGE_SIZE_Y/6.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Sunny/Clear */
-        {"Rain", {IMAGE_SIZE_X/3.8, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Rain */
-        {"Drizzle", {IMAGE_SIZE_X/3.8, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Drizzle */
-        {"Snow", {IMAGE_SIZE_X/2.3, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Snow */
-        {"Mist", {IMAGE_SIZE_X/1.63, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Mist */
-        {"Smoke", {IMAGE_SIZE_X/1.63, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Smoke */
-        {"Haze", {IMAGE_SIZE_X/1.63, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Haze */
-        {"Dust", {IMAGE_SIZE_X/1.63, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Dust */
-        {"Fog", {IMAGE_SIZE_X/1.63, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Fog */
-        {"Sand", {IMAGE_SIZE_X/1.63, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Sand */
-        {"Dust", {IMAGE_SIZE_X/1.63, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Dust */
-        {"Ash", {IMAGE_SIZE_X/1.63, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Ash */
-        {"Squall", {IMAGE_SIZE_X/1.63, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Squall */
-        {"Tornado", {IMAGE_SIZE_X/1.63, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}}, /* Tornado */
-        {"Loading...", {IMAGE_SIZE_X/1.63, IMAGE_SIZE_Y/2.3, ICON_SIZE_X, ICON_SIZE_Y}} /* Default */
+        {"Clouds", {50, 50, 50, 50}},  /* Cloudy */
+        {"Thunderstorm", {50/10, 50/2.3, 50, 50}},  /* Thunderstorm */
+        {"Clear", {50/3.8, 50/6.3, 50, 50}}, /* Sunny/Clear */
+        {"Rain", {50/3.8, 50/2.3, 50, 50}}, /* Rain */
+        {"Drizzle", {50/3.8, 50/2.3, 50, 50}}, /* Drizzle */
+        {"Snow", {50/2.3, 50/2.3, 50, 50}}, /* Snow */
+        {"Mist", {50/1.63, 50/2.3, 50, 50}}, /* Mist */
+        {"Smoke", {50/1.63, 50/2.3, 50, 50}}, /* Smoke */
+        {"Haze", {50/1.63, 50/2.3, 50, 50}}, /* Haze */
+        {"Dust", {50/1.63, 50/2.3, 50, 50}}, /* Dust */
+        {"Fog", {50/1.63, 50/2.3, 50, 50}}, /* Fog */
+        {"Sand", {50/1.63, 50/2.3, 50, 50}}, /* Sand */
+        {"Dust", {50/1.63, 50/2.3, 50, 50}}, /* Dust */
+        {"Ash", {50/1.63, 50/2.3, 50, 50}}, /* Ash */
+        {"Squall", {50/1.63, 50/2.3, 50, 50}}, /* Squall */
+        {"Tornado", {50/1.63, 50/2.3, 50, 50}}, /* Tornado */
+        {"Loading...", {50/1.63, 50/2.3, 50, 50}} /* Default */
     };
 };
+
 
 #endif
