@@ -4,7 +4,7 @@
 Please click into the `graphics-service` folder and install the graphics service via a docker container. Instructions will be posted on the README in that folder.
 
 # Mac/Linux Installation
-Coming soon!
+[Installation google drive link](https://docs.google.com/document/d/1Z42FXQdBP8Tj-RMlumWZwgHPxVUtipEUD81MRodv2js/edit?usp=sharing)
 
 # Creating a Pull Request (PR)
 
