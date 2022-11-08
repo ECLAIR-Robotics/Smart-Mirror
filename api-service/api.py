@@ -6,6 +6,10 @@ app = Flask(__name__)
 
 app.register_blueprint(widget_bp, url_prefix='/widget')
 
+@app.route('/')
+def base_page():
+    return {"success" : 'yayyyy'}
+
 if __name__ == '__main__':
 
     # Get the arguments of the given command
