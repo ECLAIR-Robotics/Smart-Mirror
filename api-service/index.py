@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 import argparse
 from widgets.handler import widget_bp
 
@@ -8,7 +8,7 @@ app.register_blueprint(widget_bp, url_prefix='/widget')
 
 @app.route('/')
 def base_page():
-    return {"success" : 'yayyyy'}
+    return jsonify({"success" : 'yayyyy'})
 
 if __name__ == '__main__':
 
