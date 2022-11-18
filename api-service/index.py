@@ -1,10 +1,19 @@
-from flask import Flask
+from flask import Flask, jsonify, make_response
 import argparse
 from widgets.handler import widget_bp
 
 app = Flask(__name__)
 
 app.register_blueprint(widget_bp, url_prefix='/widget')
+
+@app.route('/')
+def base_page():
+    msg= jsonify({"success" : 'yayyyyy'})
+    res= make_response(msg,200)
+    res.headers['Content-Type'] = 'application/json'
+    return res
+
+
 
 if __name__ == '__main__':
 

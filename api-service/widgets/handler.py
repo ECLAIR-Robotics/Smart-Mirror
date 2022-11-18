@@ -9,7 +9,6 @@ widget_bp = Blueprint('widget', __name__)
 class WeatherAPI(MethodView):
 
     def get(self) -> Response:
-
         args = request.args
         latitude: float = args.get('latitude')
         longitude: float = args.get('longitude')
@@ -46,5 +45,5 @@ widget_bp.add_url_rule(
     '/weather', view_func=WeatherAPI.as_view('weather'), methods=['GET'])
 
 widget_bp.add_url_rule(
-    '/news', view_func=NewsAPI.as_view('news'), methods=[])
+    '/news', view_func=NewsAPI.as_view('news'), methods=['GET'])
 
