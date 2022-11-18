@@ -8,7 +8,7 @@ app.register_blueprint(widget_bp, url_prefix='/widget')
 
 @app.route('/')
 def base_page():
-    msg= jsonify({"success" : 'yayyyy'})
+    msg= jsonify({"success" : 'yooooo'})
     res= make_response(msg,200)
     res.headers['Content-Type'] = 'application/json'
     return res
