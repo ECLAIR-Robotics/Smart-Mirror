@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 import argparse
 from widgets.handler import widget_bp
 
@@ -8,7 +8,12 @@ app.register_blueprint(widget_bp, url_prefix='/widget')
 
 @app.route('/')
 def base_page():
-    return jsonify({"success" : 'yayyyy'})
+    msg= jsonify({"success" : 'yayyyy'})
+    res= make_response(msg,200)
+    res.headers['Content-Type'] = 'application/json'
+    return res
+
+
 
 if __name__ == '__main__':
 
